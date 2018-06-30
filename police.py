@@ -3,7 +3,9 @@ from pygame.locals import*
 import sys
 
 class Policestr:
-
+	"""
+	Policestr -> create a drawing string and it police
+	"""
 	def __init__(self, name=None, size=20, string="text", ftype='sys', color=(0,0,0), window=None, x=0, y=0):
 		if ftype is sys:
 			self.police = pygame.font.SysFont(name, size)

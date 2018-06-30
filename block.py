@@ -3,7 +3,9 @@ from pygame.locals import*
 import sys
 
 class Block:
-
+	"""
+	Block -> hitbox no visible
+	"""
 	nb_block = 0
 	list_block = []
 	def __init__(self, x=0, y=0, larg=100, haut=100, speed=5):
@@ -15,7 +17,7 @@ class Block:
 		self.yend = y+haut
 		self.speed = speed
 		self.id = Block.nb_block
-		self.time = pygame.time.get_ticks()/1000
+		self.time = None
 		Block.nb_block += 1
 		Block.list_block.append(self)
 
@@ -25,6 +27,7 @@ class Block:
 		self.xend = x+self.larg
 		self.yend = y+self.haut
 
+	#the block position has the same position as the mouse
 	def set_mouse_position(self, pos="center"):
 		mx,  my = pygame.mouse.get_pos()
 		if pos is "origin":
@@ -43,25 +46,30 @@ class Block:
 		elif direction == "down":
 			self.ybegin += self.speed
 
+	#the block is influenced by the gravity
 	def gravity(self, g=10):
 		self.speed = g*self.time
 		self.ybegin += self.speed
 		self.time = pygame.time.get_ticks()/1000
 
+	#delete the block from the class block list
 	def delete_from_class_list(self):
 		del Block.list_block[self.id]
 		Block.nb_block -= 1
 
+	#detect a collision with a block (larg=1, haut=1)
 	def cursor_collide(self, cursor):
 		if cursor.xbegin >= self.xbegin and cursor.xbegin <= self.xend and cursor.ybegin >= self.ybegin and cursor.ybegin <= self.yend:
 			return True
 		return False
 
+	#detect a collision with a 1px/1px block and detect a keypress event
 	def press_cursor_collide(self, cursor):
 		if pygame.mouse.get_pressed()[0] and self.cursor_collide(cursor):
 			return True
 		return False
-		#cursor -> 1px/1px
+
+	#activate a callback function
 	def event(self, callback, args=None):
 			if args == None:
 				callback()
@@ -71,7 +79,9 @@ class Block:
 
 
 class Drawblock(Block):
-
+	"""
+	Drawblock -> visible drawing hitbox 
+	"""
 	def __init__(self, x=0, y=0, larg=100, haut=100, speed=5, color=(255,255,255), fill=0, window=None):
 		Block.__init__(self, x, y, larg, haut, speed)
 		if window is None:
@@ -88,7 +98,9 @@ class Drawblock(Block):
 			pygame.draw.circle(self.window, self.color, (int(self.xbegin), int(self.ybegin)), self.larg//2, self.fill)
 
 class Picblock(Block):
-
+	"""
+	Picblock -> visible picture hitbox
+	"""
 	def __init__(self, x=0, y=0, larg=100, haut=100, speed=0, pic="unknown", window=None):
 		Block.__init__(self, x, y, larg, haut, speed)
 		if window is None:

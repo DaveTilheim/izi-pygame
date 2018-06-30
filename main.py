@@ -1,5 +1,5 @@
 from izipygame import *
-
+#TEST FILE
 pygame.font.init()
 fenetre = Window(1200, 800, "os")
 p = Policestr(name=None, size=20, string="text", ftype='sys', color=(250,0,0), window=fenetre.get_canva(), x=0, y=0)

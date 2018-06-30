@@ -4,3 +4,4 @@ from random import randint
 from block import *
 from window import *
 from police import *
+#import file
