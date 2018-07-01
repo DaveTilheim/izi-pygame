@@ -36,21 +36,26 @@ class Block:
 			self.set_position(mx-self.larg//2, my-self.haut//2)
 
 
-	def move(self, direction):
+	def move(self, direction, spd=None):
+		speed = self.speed
+		if spd is not None:
+			speed = spd
 		if direction == "right":
-			self.xbegin += self.speed
+			self.xbegin += speed
 		elif direction == "left":
-			self.xbegin -= self.speed
+			self.xbegin -= speed
 		elif direction == "up":
-			self.ybegin -= self.speed
+			self.ybegin -= speed
 		elif direction == "down":
-			self.ybegin += self.speed
+			self.ybegin += speed
+		self.set_position(self.xbegin, self.ybegin)
 
 	#the block is influenced by the gravity
 	def gravity(self, g=10):
 		self.speed = g*self.time
 		self.ybegin += self.speed
 		self.time = pygame.time.get_ticks()/1000
+		self.set_position(self.xbegin, self.ybegin)
 
 	#delete the block from the class block list
 	def delete_from_class_list(self):
@@ -76,6 +81,76 @@ class Block:
 			else:
 				callback(args)
 
+	def mult_size(self, fact=1):
+		if fact <= 0:
+			return 'error'
+		self.larg = int(self.larg * fact)
+		self.haut = int(self.haut * fact)
+		self.set_position(self.xbegin, self.ybegin)
+
+	def div_size(self, fact=1):
+		if fact <= 0:
+			return 'error'
+		self.larg = self.larg//fact
+		self.haut = self.haut//fact
+		self.set_position(self.xbegin, self.ybegin)
+
+	def pow_size(self, power=2):
+		if power < 0:
+			return 'error'
+		self.larg = self.larg**power
+		self.haut = self.haut**power
+		self.set_position(self.xbegin, self.ybegin)
+
+	def __imul__(self, fact):
+		if fact <= 0:
+			return self
+		self.larg = int(self.larg * fact)
+		self.haut = int(self.haut * fact)
+		self.set_position(self.xbegin, self.ybegin)
+		return self
+
+	def __itruediv__(self, fact):
+		if fact <= 0:
+			return self
+		self.larg = self.larg//fact
+		self.haut = self.haut//fact
+		self.set_position(self.xbegin, self.ybegin)
+		return self
+	#same as truediv
+	def __ifloordiv__(self, fact):
+		if fact <= 0:
+			return self
+		self.larg = self.larg//fact
+		self.haut = self.haut//fact
+		self.set_position(self.xbegin, self.ybegin)
+		return self
+
+	def __ipow__(self, power):
+		if power < 0:
+			return self
+		self.larg = self.larg**power
+		self.haut = self.haut**power
+		self.set_position(self.xbegin, self.ybegin)
+		return self
+
+	def __lshift__(self, other):
+		self.larg += other.larg
+		self.haut += other.haut
+		self.set_position(self.xbegin, self.ybegin)
+	
+	def __rshift__(self, other):
+		other << self
+
+	def __str__(self):
+		return "{}x{} ({}x{}y)".format(self.larg, self.haut, self.xbegin, self.ybegin)
+
+	def __repr__(self):
+		string = "pos: ({}, {})\ndim: ({}, {})\nspeed: {}\nid: #{}\n".format(
+			self.xbegin, self.ybegin, self.larg, self.haut, self.speed, self.id)
+		return string
+
+
 
 
 class Drawblock(Block):
@@ -97,6 +172,12 @@ class Drawblock(Block):
 		elif form is "circle":
 			pygame.draw.circle(self.window, self.color, (int(self.xbegin), int(self.ybegin)), self.larg//2, self.fill)
 
+	def __repr__(self):
+		string = Block.__repr__(self)
+		string += "color: {}".format(self.color)
+		return string
+
+
 class Picblock(Block):
 	"""
 	Picblock -> visible picture hitbox
@@ -116,6 +197,21 @@ class Picblock(Block):
 
 	def print(self):
 		self.window.blit(self.pic, (self.xbegin, self.ybegin))
+
+	def set_pic(self, pic, larg=None, haut=None):
+		if larg is not None:
+			self.larg = larg
+		if haut is not None:
+			self.haut = haut
+		self.namepic = pic
+		self.pic = pygame.image.load(self.namepic).convert_alpha()
+		self.pic = pygame.transform.scale(self.pic, (self.larg, self.haut))
+		self.set_position(self.xbegin, self.ybegin)
+
+	def __repr__(self):
+		string = Block.__repr__(self)
+		string += "picture: {}".format(self.pic)
+		return string
 
 
 
