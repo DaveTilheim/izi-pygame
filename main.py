@@ -6,8 +6,8 @@ p = Policestr(name=None, size=20, string="text", color=(250,0,0), window=fenetre
 b = Drawblock(window=fenetre.get_canva(), y=200, x=300)
 a = Drawblock(window=fenetre.get_canva(), y=200, x=300)
 
-print(str(b))
 pygame.init()
+
 
 
 fini = False

@@ -21,3 +21,11 @@ class Window:
 	#return the pygame window
 	def get_canva(self):
 		return self.win
+
+	def set_size(self, wlarg=500, whaut=500):
+		self.wlarg = wlarg
+		self.whaut = whaut
+		self.win = pygame.display.set_mode((wlarg, whaut))
+
+	def set_title(self, string):
+		pygame.display.set_caption(string)
