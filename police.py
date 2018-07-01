@@ -35,6 +35,9 @@ class Policestr:
 		self.txt = string
 		self.refresh()
 
+	def get_text(self):
+		return self.txt
+
 	def set_font(self, name=None, size=None):
 		if name is not None:
 			self.policename = name
@@ -90,6 +93,9 @@ class Policestr:
 		self.set_font(size=int(self.policesize//fact))
 		self.refresh()
 		return self
+
+	def __str__(self):
+		return self.get_text()
 
 	def __repr__(self):
 		return "font: {}\nsize: {}\ntext: {}\ncolor: {}\nitalic: {}\nbold: {}\nunderline: {}".format(
