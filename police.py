@@ -4,7 +4,7 @@ import sys
 
 class Policestr:
 	"""
-	Policestr -> create a drawing string and it police
+	Policestr -> create a drawing string and the police
 	"""
 	def __init__(self, name=None, size=20, string="text", color=(0,0,0), window=None, x=0, y=0, italic=0, bold=0, underline=0):
 		self.police = pygame.font.Font(name, size)
@@ -49,12 +49,53 @@ class Policestr:
 		self.police.set_underline(ul)
 		self.refresh()
 
-	#Police >> "str"
-	def __rshift__(self, string):
+	#Police << "str"
+	def __lshift__(self, string):
 		if type(string) is not str:
 			string = str(string)
 		self.txt = string
 		self.refresh()
+
+	def __iadd__(self, fact):
+		if fact < 0:
+			return self
+		self.set_font(size=int(self.policesize+fact))
+		self.refresh()
+		return self
+
+	def __isub__(self, fact):
+		if fact < 0:
+			return self
+		self.set_font(size=int(self.policesize-fact))
+		self.refresh()
+		return self
+
+	def __imul__(self, fact):
+		if fact < 0:
+			return self
+		self.set_font(size=int(self.policesize*fact))
+		self.refresh()
+		return self
+
+	def __itruediv__(self, fact):
+		if fact < 0:
+			return self
+		self.set_font(size=int(self.policesize//fact))
+		self.refresh()
+		return self
+
+	def __ifloordiv__(self, fact):
+		if fact < 0:
+			return self
+		self.set_font(size=int(self.policesize//fact))
+		self.refresh()
+		return self
+
+	def __repr__(self):
+		return "font: {}\nsize: {}\ntext: {}\ncolor: {}\nitalic: {}\nbold: {}\nunderline: {}".format(
+			self.policename, self.policesize, self.txt, self.color,
+			self.police.get_italic(), self.police.get_bold(), self.police.get_underline()
+			)
 
 
 
