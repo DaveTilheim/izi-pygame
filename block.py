@@ -193,12 +193,12 @@ class Picblock(Block):
 	namepic = name of the picture
 	pic = picture load
 	"""
-	def __init__(self, x=0, y=0, larg=100, haut=100, speed=0, namepic="unknown", window=None):
+	def __init__(self, x=0, y=0, larg=100, haut=100, speed=0, namepic=None, window=None):
 		Block.__init__(self, x, y, larg, haut, speed)
 		if window is None:
 			print("Error: no window to print block-id #{}".format(self.id))
 			sys.exit(0)
-		elif pic is "unknown":
+		elif pic is None:
 			print("Error: impossible to load picture about block-id #{}".format(self.id))
 			sys.exit(0)
 		self.window = window

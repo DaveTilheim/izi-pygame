@@ -59,7 +59,19 @@ class Policestr:
 		self.police.set_bold(bd)
 		self.police.set_underline(ul)
 		self.refresh()
+	"""concatenation"""
+	def strcat(self, string):
+		if type(string) is not str:
+			string = str(string)
+		self.txt += string
+		self.refresh()
 
+	"""concatenation with >>"""
+	def __rshift__(self, string):
+		if type(string) is not str:
+			string = str(string)
+		self.txt += string
+		self.refresh()
 	"""set the text of the string with <<"""
 	def __lshift__(self, string):
 		if type(string) is not str:
