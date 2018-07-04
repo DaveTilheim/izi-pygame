@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>izi-pygame documentation (Drawblock)</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1><a href="index.html">izi-pygame Documentation</a> (Drawblock)</h1>
+	<p class="presentation">
+		The <b>Drawblock</b> object is a Block object that can be draw on a pygame window
+	</p>
+	<h2>Instance attributes</h2>
+	<ol>
+		<li>
+			<code>self.color</code> -> the color of the instance
+		</li>
+		<li>
+			<code>self.window</code> -> the pygame.Surface where the instance will be drawed
+		</li>
+		<li>
+			<code>self.fill</code> -> if 0 indicates that the instance will be filled with color
+		</li>
+	</ol>
+	<h2>__init__ method</h2>
+	<code>def __init__(self, x=0, y=0, width=100, height=100, speed=5, color=(255,255,255), fill=0, window=None)</code>
+	<h2>Method</h2>
+	<code>def draw(self, form="rect")</code> -> draw the instance to the <code>self.window. form="rect" or "circle"</code>
+</body>
+</html>

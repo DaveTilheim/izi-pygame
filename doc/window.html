@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>izi-pygame documentation (Window)</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1><a href="index.html">izi-pygame Documentation</a> (Window)</h1>
+	<p class="presentation">
+		The <b>Window</b> object is an object that manage the pygame.Surface to print pygame objects
+	</p>
+	<h2>Instance attributes</h2>
+	<ol>
+		<li>
+			<code>self.wtitle</code> -> the title of the window
+		</li>
+		<li>
+			<code>self.wwidth</code> -> the width of the window
+		</li>
+		<li>
+			<code>self.wheight</code> -> the height of the window
+		</li>
+		<li>
+			<code>self.win</code> -> the pygame window 
+		</li>
+	</ol>
+	<h2>__init__ method</h2>
+	<code>def __init__(self, wwidth=500, wheight=500, wtitle="unknown")</code>
+	<h2>Methods</h2>
+	<ol>
+		<li>
+			<code>def fill(self, color)</code> -> the background of the window is filled with <code>color</code>
+		</li>
+		<li>
+			<code>def get_canva(self)</code> -> <code>return self.win</code>
+		</li>
+		<li>
+			<code>def set_size(self, wwidth=500, wheight=500)</code> -> set the size of the window
+		</li>
+		<li>
+			<code>def set_title(self, string)</code> -> set the title of the window
+		</li>
+	</ol>
+
+</body>
+</html>

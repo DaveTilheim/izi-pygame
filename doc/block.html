@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>izi-pygame documentation (Block)</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1><a href="index.html">izi-pygame Documentation</a> (Block)</h1>
+	<p class="presentation">
+		The <b>Block</b> object is an invisible box that serves as the mother class of the 
+		<a href="drawblock.html">Drawblock</a> and the <a href="picblock.html">Picblock</a>.
+	</p>
+	<h2>Class attributes</h2>
+	<ol>
+		<li>
+			<code>Block.nb_block</code> -> The number of instances created
+		</li>
+		<li>
+			<code>Block.list_block</code> -> A list that contain all the instances created
+		</li>
+	</ol>
+	<h2>Instance attributes</h2>
+	<ol>
+		<li>
+			<code>self.xbegin</code> -> x origin (left side) of the instance 
+		</li>
+		<li>
+			<code>self.ybegin</code> -> y origin (up side) of the instance 
+		</li>
+		<li>
+			<code>self.xend</code> -> the opposite of self.xbegin (right side) of the instance
+		</li>
+		<li>
+			<code>self.yend</code> -> the opposite of self.ybegin (bottom side) of the instance
+		</li>
+		<li>
+			<code>self.width</code> -> the width of the instance
+		</li>
+		<li>
+			<code>self.height</code> -> the height of the instance
+		</li>
+		<li>
+			<code>self.speed</code> -> the speed of the instance (not used if the instance doesn't <code>move()</code>)
+		</li>
+		<li>
+			<code>self.id</code> -> the identification code of the instance (equal to the Block.nb_block at the cration of the instance)
+		</li>
+	</ol>
+	<h2>__init__ method</h2>
+	<code>def __init__(self, x=0, y=0, width=100, height=100, speed=5)</code>
+	<br>the current instance is added to the <code>Block.list_block</code> and 
+	<code>Block.nb_block</code> is incremented
+	<h2>Methods</h2>
+	<ol>
+		<li>
+			<code>def set_position(self, x, y)</code> -> set the position of the instance
+		</li>
+		<li>
+			<code>def set_mouse_position(self, pos="center")</code> -> set the position of the instance with the mouse position. (<code>pos="center" or "origin"[mx,my]</code>)
+		</li>
+		<li>
+			<code>def move(self, direction, spd=None)</code> -> move the instance in a direction with a speed.<br>
+			if speed is not mentionned, <code>speed=self.speed</code>. direction can take 4 values (<code>"right" "left" "up" "down"</code>)
+		</li>
+		<li>
+			<code>def gravity(self, g=10)</code> -> the instance is influenced by the gravity
+		</li>
+		<li>
+			<code>def delete_from_class_list(self)</code> -> the instance is deleted from the Block.list_block
+		</li>
+		<li>
+			<code>def cursor_collide(self, cursor)</code> -> detect a collision with a block 1x1<br>
+			<code>return boolean</code>
+		</li>
+		<li>
+			<code>def press_cursor_collide(self, cursor)</code> -> detect a collision with a block 1x1 and a left click at the same time<br>
+			<code>return boolean</code>
+		</li>
+		<li>
+			<code>def mult_size(self, fact=1)</code> -> the size of the instance is mult by fact
+		</li> 
+		<li>
+			<code>def div_size(self, fact=1)</code> -> the size of the instance is divided by fact
+		</li>
+		<li>
+			<code>def pow_size(self, power=2)</code> -> the size of the instance is powered by fact
+		</li>
+	</ol>
+	<h2>Specials methods</h2>
+	<ol>
+		<li>
+			<code>def __imul__(self, fact)</code> -> same as <code>def mult_size(self, fact=1)</code> but with <code>*=</code>
+		</li>
+		<li>
+			<code>def __itruediv__(self, fact)</code> -> same as <code>def div_size(self, fact=1)</code> but with <code>/=</code>
+		</li>
+		<li>
+			<code>def __ifloordiv__(self, fact)</code> -> same as <code>def div_size(self, fact=1)</code> but with <code>//=</code>
+		</li>
+		<li>
+			<code>def __ipow__(self, power)</code> -> same as <code>def pow_size(self, power=2)</code> but with <code>**=</code>
+		</li>
+		<li>
+			<code>def __lshift__(self, other)</code> -> the size of the instance is added with the size of an other instance with <code><<</code>
+		</li>
+		<li>
+			<code>def __rshift__(self, other)</code> -> the size of the other instance is added with the size of the current instance with <code>>></code>
+		</li>
+		<li>
+			<code>def __str__(self)</code> -> return a string that contains witdh/height and x/y
+		</li>
+	</ol>
+</body>
+</html>
