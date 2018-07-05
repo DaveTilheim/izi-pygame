@@ -43,6 +43,9 @@
 			<code>self.speed</code> -> the speed of the instance (not used if the instance doesn't <code>move()</code>)
 		</li>
 		<li>
+			<code>self.rect</code> -> pygame.Rect object
+		</li>
+		<li>
 			<code>self.id</code> -> the identification code of the instance (equal to the Block.nb_block at the cration of the instance)
 		</li>
 	</ol>
@@ -56,7 +59,14 @@
 			<code>def set_position(self, x, y)</code> -> set the position of the instance
 		</li>
 		<li>
+			<code>def set_dimension(self, width=None, height=None)</code> -> set the dimension of the instance
+		</li>
+		<li>
 			<code>def set_mouse_position(self, pos="center")</code> -> set the position of the instance with the mouse position. (<code>pos="center" or "origin"[mx,my]</code>)
+		</li>
+		<li>
+			<code>def is_in_collision_with(self, other)</code> -> detect a collision between 2 blocks or a list of blocks with the instance.<br> 
+			<code>collision</code> is a function pointer and it has the same role as the function <code>is_in_collision_with</code>
 		</li>
 		<li>
 			<code>def move(self, direction, spd=None)</code> -> move the instance in a direction with a speed.<br>

@@ -19,6 +19,7 @@ class Block:
 		self.ybegin = y
 		self.width = width
 		self.height = height
+		self.rect = pygame.Rect(x, y, width, height)
 		self.xend = x+width
 		self.yend = y+height
 		self.speed = speed
@@ -32,6 +33,26 @@ class Block:
 		self.ybegin = y
 		self.xend = x+self.width
 		self.yend = y+self.height
+		self.rect = pygame.Rect(x, y, self.width, self.height)
+	"""set the dimanension of the block"""
+	def set_dimension(self, width=None, height=None):
+		new_width = width
+		new_height = height
+		if width is None:
+			new_width = self.width
+		if height is None:
+			new_height = self.height
+		self.width = new_width
+		self.height = new_height
+		self.rect = pygame.Rect(self.xbegin, self.ybegin, new_width, new_height)
+	"""detect collision between rects"""
+	def is_in_collision_with(self, other):
+		if type(other) is list:
+			return self.rect.collidelist(other)
+		else:
+			return self.rect.colliderect(other)
+	#alias
+	collision = is_in_collision_with
 
 	"""the block position has the same position as the mouse"""
 	def set_mouse_position(self, pos="center"):
@@ -170,7 +191,7 @@ class Drawblock(Block):
 	"""draw the block on the screen"""
 	def draw(self, form="rect"):
 		if form is "rect":
-			pygame.draw.rect(self.window, self.color, (self.xbegin, self.ybegin, self.width, self.height), self.fill)
+			pygame.draw.rect(self.window, self.color, self.rect, self.fill)
 		elif form is "circle":
 			pygame.draw.circle(self.window, self.color, (int(self.xbegin), int(self.ybegin)), self.width//2, self.fill)
 
