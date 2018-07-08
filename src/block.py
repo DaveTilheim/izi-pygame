@@ -44,7 +44,7 @@ class Block:
 			new_height = self.height
 		self.width = new_width
 		self.height = new_height
-		self.rect = pygame.Rect(self.xbegin, self.ybegin, new_width, new_height)
+		self.set_position(self.xbegin, self.ybegin)
 	"""detect collision between rects"""
 	def is_in_collision_with(self, other):
 		if type(other) is list:
@@ -213,7 +213,7 @@ class Picblock(Block):
 		if window is None:
 			print("Error: no window to print block-id #{}".format(self.id))
 			sys.exit(0)
-		elif pic is None:
+		elif namepic is None:
 			print("Error: impossible to load picture about block-id #{}".format(self.id))
 			sys.exit(0)
 		self.window = window
@@ -223,6 +223,18 @@ class Picblock(Block):
 	"""print the picture block on the screen"""
 	def print(self):
 		self.window.blit(self.pic, (self.xbegin, self.ybegin))
+	def set_dimension(self, width=None, height=None):
+		new_width = width
+		new_height = height
+		if width is None:
+			new_width = self.width
+		if height is None:
+			new_height = self.height
+		self.width = new_width
+		self.height = new_height
+		self.rect = pygame.Rect(self.xbegin, self.ybegin, new_width, new_height)
+		self.pic = pygame.transform.scale(self.pic, (self.width, self.height))
+		self.set_position(self.xbegin, self.ybegin)
 	"""set the picture with an other pic and other dimensions"""
 	def set_pic(self, pic, width=None, height=None):
 		if width is not None:
