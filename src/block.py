@@ -223,6 +223,7 @@ class Picblock(Block):
 	"""print the picture block on the screen"""
 	def print(self):
 		self.window.blit(self.pic, (self.xbegin, self.ybegin))
+
 	def set_dimension(self, width=None, height=None):
 		new_width = width
 		new_height = height
@@ -250,6 +251,52 @@ class Picblock(Block):
 		string = Block.__repr__(self)
 		string += "picture: {}".format(self.pic)
 		return string
+
+
+class Spriteblock(Picblock):
+
+	"""
+	Spriteblock -> animated Picblock
+	sprites = list of pictures that composed the block
+	frequence = speed of animation (not the same with each fps)
+	first_sprite = the index of the first sprite
+	"""
+	def __init__(self, sprites, window, first_sprite=0, x=0, y=0, width=100, height=100, speed=0, frequence=10):
+		Picblock.__init__(self, x, y, width, height, speed, sprites[first_sprite], window)
+		self.sprite_list = sprites
+		self.index_picture = 0
+		self.number_pictures = len(self.sprite_list)
+		self.frequence = frequence
+		self.index_frequence = 0
+
+	"""
+	print the Spriteblock with animation
+	"""
+	def anime(self, jump=1):
+		if self.index_frequence < self.frequence:
+			self.index_frequence += 1
+			self.print()
+			return
+		elif self.index_frequence >= self.frequence:
+			self.index_frequence = 0
+		if jump < 1 or jump > self.number_pictures:
+			jump = 1
+		self.print()
+		self.set_pic(self.sprite_list[self.index_picture])
+		self.index_picture += jump
+		if self.index_picture >= self.number_pictures:
+			self.index_picture = 0
+
+	"""
+	set a new sprite list
+	"""
+	def set_sprite_list(self, sprites):
+		self.sprite_list = sprites
+		self.index_picture = 0
+		self.number_pictures = len(self.sprite_list)
+
+
+
 
 
 

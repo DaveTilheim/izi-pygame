@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>izi-pygame documentation (Spriteblock)</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1><a href="index.html">izi-pygame Documentation</a> (Spriteblock)</h1>
+	<p class="presentation">
+		The <b>Spriteblock</b> object is a Picblock that can animated itself with a list of picture.
+	</p>
+	<h2>Instance attributes</h2>
+	<ol>
+		<li>
+			<code>self.sprite_list</code> -> a list of pictures
+		</li>
+		<li>
+			<code>self.index_picture</code> -> the index of the current picture in the animation
+		</li>
+		<li>
+			<code>self.number_pictures</code> -> the lenght of <code>self.sprite_list</code>
+		</li>
+		<li>
+			<code>self.frequence</code> -> speed of animation (not the same with each fps)
+		</li>
+	</ol>
+	<h2>__init__ method</h2>
+	<code>def __init__(self, sprites, window, first_sprite=0, x=0, y=0, width=100, height=100, speed=0, frequence=10)</code>
+	<h2>Methods</h2>
+	<ol>
+		<li>
+			<code>def anime(self, jump=1)</code> -> print and anime the instance (jump a number of pictures to each call of this method)
+		</li>
+		<li>
+			<code>def set_sprite_list(self, sprites)</code> -> set the <code>sprite_list</code>
+		</li>
+	</ol>
+</body>
+</html>
