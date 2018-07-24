@@ -5,23 +5,14 @@
 	<meta charset="utf-8">
 </head>
 <body>
-	<h1><a href="index.html">izi-pygame Documentation</a> (Policestr)</h1>
+	<h1><a href="index.html">izi-pygame Documentation</a> (Printstring)</h1>
 	<p class="presentation">
-		The <b>Policestr</b> object is a string that can be write on the screen with a pygame.Surface object
+		The <b>Printstring</b> object is a string that can be write on the screen with a pygame.Surface object
 	</p>
 	<h2>Instance attributes</h2>
 	<ol>
 		<li>
-			<code>self.police</code> -> the pygame.font
-		</li>
-		<li>
-			<code>self.window</code> -> the pygame.Surface where the instance will be drawed
-		</li>
-		<li>
-			<code>self.policename</code> -> the name of the police
-		</li>
-		<li>
-			<code>self.policesize</code> -> the size of the police
+			<code>self.main_font</code> -> the Fontstring object
 		</li>
 		<li>
 			<code>self.txt</code> -> the text to print
@@ -37,14 +28,14 @@
 		</li>
 	</ol>
 	<h2>__init__ method</h2>
-	<code>def __init__(self, name=None, size=20, string="text", color=(0,0,0), window=None, x=0, y=0, italic=0, bold=0, underline=0)</code>
+	<code>def __init__(self, main_font, string="text", color=(0,0,0), x=0, y=0)</code>
 	<h2>Methods</h2>
 	<ol>
 		<li>
 			<code>def refresh(self)</code> -> update the <code>self.string</code> with new modifications
 		</li>
 		<li>
-			<code>def write(self)</code> -> write the instance to the screen <code>self.window</code>
+			<code>def write(self)</code> -> write the instance to the screen
 		</li>
 		<li>
 			<code>def set_text(self, string)</code> -> set the text to write to the screen

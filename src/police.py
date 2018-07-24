@@ -2,7 +2,20 @@ import pygame, pygame.mixer
 from pygame.locals import*
 import sys
 #police = font
-class Policestr:
+pygame.init()
+pygame.font.init()
+
+class Fontstring:
+
+	def __init__(self, name=None, size=20, italic=0, bold=0, underline=0, window=None):
+		self.font = pygame.font.Font(name, size)
+		self.font.set_italic(italic)
+		self.font.set_bold(bold)
+		self.font.set_underline(underline)
+		self.win = window
+
+class Printstring:
+	police = pygame.font.Font(None, 20)
 	"""
 	Policestr -> create a drawing string and the police
 	police = pygame.font.Font()
@@ -14,28 +27,19 @@ class Policestr:
 	window = pygame.Surface()
 	x and y = posiiton of the text
 	"""
-	def __init__(self, name=None, size=20, string="text", color=(0,0,0), window=None, x=0, y=0, italic=0, bold=0, underline=0):
-		self.police = pygame.font.Font(name, size)
-		self.police.set_italic(italic)
-		self.police.set_bold(bold)
-		self.police.set_underline(underline)
-		self.policename = name
-		self.policesize = size
+	def __init__(self, main_font, string="text", color=(0,0,0), x=0, y=0):
 		self.txt = string
-		self.string = self.police.render(string, True, color)
+		self.string = main_font.font.render(string, True, color)
 		self.color = color
-		if window is None:
-			print("police error: no window")
-			sys.exit(0)
-		self.window = window
 		self.x = x
 		self.y = y
+		self.main_font = main_font
 	"""update the printed string"""
 	def refresh(self):
-		self.string = self.police.render(self.txt, True, self.color)
+		self.string = self.main_font.font.render(self.txt, True, self.color)
 	"""print the string"""
 	def write(self):
-		self.window.blit(self.string, (self.x, self.y))
+		self.main_font.win.blit(self.string, (self.x, self.y))
 	"""set the text to print"""
 	def set_text(self, string):
 		if type(string) is not str:
@@ -51,13 +55,13 @@ class Policestr:
 			self.policename = name
 		if size is not None:
 			self.policesize = size
-		self.police = pygame.font.Font(self.policename, self.policesize)
+		self.main_font.font = pygame.font.Font(self.policename, self.policesize)
 		self.refresh()
 	"""set the style of the police"""
 	def set_style(self, it=False, bd=False, ul=False):
-		self.police.set_italic(it)
-		self.police.set_bold(bd)
-		self.police.set_underline(ul)
+		self.main_font.font.set_italic(it)
+		self.main_font.font.set_bold(bd)
+		self.main_font.font.set_underline(ul)
 		self.refresh()
 	"""concatenation"""
 	def strcat(self, string):
@@ -120,7 +124,7 @@ class Policestr:
 	def __repr__(self):
 		return "font: {}\nsize: {}\ntext: {}\ncolor: {}\nitalic: {}\nbold: {}\nunderline: {}".format(
 			self.policename, self.policesize, self.txt, self.color,
-			self.police.get_italic(), self.police.get_bold(), self.police.get_underline()
+			self.main_font.font.get_italic(), self.main_font.font.get_bold(), self.main_font.font.get_underline()
 			)
 
 
