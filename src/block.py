@@ -78,9 +78,9 @@ class Block:
 
 	"""the block is influenced by the gravity"""
 	def gravity(self, g=10):
+		self.time = pygame.time.get_ticks()/1000
 		self.speed = g*self.time
 		self.ybegin += self.speed
-		self.time = pygame.time.get_ticks()/1000
 		self.set_position(self.xbegin, self.ybegin)
 
 	"""delete the block from the classblock_list"""
@@ -170,6 +170,19 @@ class Block:
 			self.xbegin, self.ybegin, self.width, self.height, self.speed, self.id)
 		return string
 
+
+class Cursor(Block):
+
+	def __init__(self):
+		Block.__init__(self, width=1, height=1, speed=0)
+
+	def update(self):
+		self.set_mouse_position()
+
+	def visible(self, boolean=True):
+		pygame.mouse.set_visible(boolean)
+
+Pixelblock = Cursor
 
 
 

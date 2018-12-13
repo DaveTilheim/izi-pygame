@@ -24,6 +24,7 @@ class Window:
 	"""return the pygame window"""
 	def get_canva(self):
 		return self.win
+	surface = get_canva
 	"""set the size of the window"""
 	def set_size(self, wwidth=500, wheight=500):
 		self.wwidth = wwidth

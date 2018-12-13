@@ -38,7 +38,16 @@
 			<code>def write(self)</code> -> write the instance to the screen
 		</li>
 		<li>
+			<code>def set_color(self, color=None)</code> -> set a new RGB color [None -> random color]
+		</li>
+		<li>
 			<code>def set_text(self, string)</code> -> set the text to write to the screen
+		</li>
+		<li>
+			<code>def get_width(self)</code> -> get the width of the string
+		</li>
+		<li>
+			<code>def get_height(self)</code> -> get the height of the string
 		</li>
 		<li>
 			<code>def get_text(self)</code> -> <code>return self.txt</code>
@@ -60,21 +69,6 @@
 		</li>
 		<li>
 			<code>def __lshift__(self, string)</code> -> set the text to print with <code><<</code>
-		</li>
-		<li>
-			<code>def __iadd__(self, fact)</code> -> up the police size with <code>+=</code>
-		</li>
-		<li>
-			<code>def __isub__(self, fact)</code> -> down the police size with <code>-=</code>
-		</li>
-		<li>
-			<code>def __imul__(self, fact)</code> -> mult the police size with <code>*=</code>
-		</li>
-		<li>
-			<code>def __itruediv__(self, fact)</code> -> div the police size with <code>/=</code>
-		</li>
-		<li>
-			<code>def __ifloordiv__(self, fact)</code> -> div the police size with <code>//=</code>
 		</li>
 		<li>
 			<code>def __str__(self)</code> -> same as <code>get_text(self)</code>
