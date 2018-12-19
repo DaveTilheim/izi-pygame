@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>izi-pygame documentation (Entry)</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1><a href="index.html">izi-pygame Documentation</a> (Entry)</h1>
+	<p class="presentation">
+		The <b>Entry</b> object is a Button object who you can entry a piece of text
+	</p>
+	<h2>Instance attributes</h2>
+	<ol>
+		<li>
+			<code>self.max_char</code> -> the maximum of char who you can write on an Entry
+		</li>
+	</ol>
+	<h2>__init__ method</h2>
+	<code>def __init__(self, x=0, y=0, width=100, text=str("your text here"), font=None, window=None, cursor=None, max_char=100, text_color=(0,0,0))</code>
+	<h2>Methods</h2>
+	<ol>
+		<li>
+			<code>def focus_callback(self)</code> -> get the focus of the entry
+		</li>
+		<li>
+			<code>def launch(self)</code> -> print the entry
+		</li>
+		<li>
+			<code>def grab_key(self, key_name)</code> -> catch a keyname thanks to the user and update the entry
+		</li>
+	</ol>
+</body>
+</html>

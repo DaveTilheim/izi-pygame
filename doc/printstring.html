@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>izi-pygame documentation (Policestr)</title>
+	<title>izi-pygame documentation (Printstring)</title>
 	<meta charset="utf-8">
 </head>
 <body>
@@ -25,6 +25,9 @@
 		</li>
 		<li>
 			<code>self.y</code> -> the y position of the instance
+		</li>
+		<li>
+			<code>self.color</code> -> the color of the instance
 		</li>
 	</ol>
 	<h2>__init__ method</h2>
@@ -61,6 +64,9 @@
 		<li>
 			<code>def strcat(self, string)</code> -> concatenation of the <code>self.txt</code> with <code>string</code>
 		</li>
+		<li>
+			<code>def set_position(self, x, y)</code> -> set the position of the Printstring
+		</li>
 	</ol>
 	<h2>Specials methods</h2>
 	<ol>
@@ -69,9 +75,6 @@
 		</li>
 		<li>
 			<code>def __lshift__(self, string)</code> -> set the text to print with <code><<</code>
-		</li>
-		<li>
-			<code>def __str__(self)</code> -> same as <code>get_text(self)</code>
 		</li>
 	</ol>
 </body>

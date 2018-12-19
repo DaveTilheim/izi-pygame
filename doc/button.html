@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>izi-pygame documentation (Button)</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1><a href="index.html">izi-pygame Documentation</a> (Button)</h1>
+	<p class="presentation">
+		The <b>Button</b> object is a Block object.
+		You can attribute it a callback function which is activate if the user click on the button
+	</p>
+	<h2>Class attributes</h2>
+	<ol>
+		<li>
+			<code>Button.list_button</code> -> The list of all Button instances
+		</li>
+	</ol>
+	<h2>Instance attributes</h2>
+	<ol>
+		<li>
+			<code>self.cursor</code> -> a Cursor object
+		</li>
+		<li>
+			<code>self.sensitive</code> -> true if the button is clickable
+		</li>
+		<li>
+			<code>self.ajust</code> -> true if the text is centralized
+		</li>
+		<li>
+			<code>self.ajust_value</code> -> padding value
+		</li>
+	</ol>
+	<h2>__init__ method</h2>
+	<code>def __init__(self, callback, cursor, x=0, y=0, width=100, height=50, text=None, text_color=(0,0,0), window=None, font=None, ajust=False, ajust_value=0)</code>
+	<h2>Methods</h2>
+	<ol>
+		<li>
+			<code>def get_text(self)</code> -> get the text of the button
+		</li>
+		<li>
+			<code>def set_text(self)</code> -> set the text of the button
+		</li>
+		<li>
+			<code>def set_sensitive(self, boolean)</code> -> set the sensitivity of the button
+		</li>
+		<li>
+			<code>def ajust_button(self)</code> -> ajust the position and the dimension of the button
+		</li>
+		<li>
+			<code>def launch(self)</code> -> print the button and wait detection
+		</li>
+	</ol>
+	
+</body>
+</html>
