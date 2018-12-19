@@ -35,7 +35,7 @@ class Window:
 		return self._wheight
 	def set_wheight(self, height):
 		self.set_size(self._width, height)
-	wwheight = property(fget=get_wheight, fset=set_wheight, doc="the height of the window")
+	wheight = property(fget=get_wheight, fset=set_wheight, doc="the height of the window")
 
 	
 	def fill(self, color):
